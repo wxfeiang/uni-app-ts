@@ -13,7 +13,7 @@ const conunt = reactive([
     unit: "元"
   },
   {
-    title: "已申报税额合集",
+    title: "已申报税额合计",
     icon: "",
     value: "100000",
     unit: "元"
