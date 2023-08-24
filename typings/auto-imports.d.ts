@@ -78,6 +78,7 @@ declare global {
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useSlots: typeof import('vue')['useSlots']
+  const useTax: typeof import('../src/subPages/subUser/PersonalIncomeTax/useTax')['default']
   const useUser: typeof import('../src/pages/user/useUser')['default']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']

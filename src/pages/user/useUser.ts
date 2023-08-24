@@ -1,38 +1,28 @@
-const indexList = ref(<any>[])
-const urls = [
-  "https://cdn.uviewui.com/uview/album/1.jpg",
-  "https://cdn.uviewui.com/uview/album/2.jpg",
-  "https://cdn.uviewui.com/uview/album/3.jpg",
-  "https://cdn.uviewui.com/uview/album/4.jpg",
-  "https://cdn.uviewui.com/uview/album/5.jpg",
-  "https://cdn.uviewui.com/uview/album/6.jpg",
-  "https://cdn.uviewui.com/uview/album/7.jpg",
-  "https://cdn.uviewui.com/uview/album/8.jpg",
-  "https://cdn.uviewui.com/uview/album/9.jpg",
-  "https://cdn.uviewui.com/uview/album/10.jpg"
-]
+const indexList = ref(<any>[
+  {
+    title: "vip",
+    url: "/subPages/subUser/vip/index",
+    img: "https://cdn.uviewui.com/uview/album/10.jpg"
+  },
+  {
+    title: "关于我",
+    url: "/subPages/subUser/about/index",
+    img: "https://cdn.uviewui.com/uview/album/9.jpg"
+  },
+  {
+    title: "个税显示",
+    url: "/subPages/subUser/PersonalIncomeTax/index",
+    img: "https://cdn.uviewui.com/uview/album/7.jpg"
+  }
+])
 
-const loadmore = () => {
-  for (let i = 0; i < 30; i++) {
-    indexList.value.push({
-      url: urls[uni.$u.random(0, urls.length - 1)]
-    })
-  }
-}
-const goDetil = (id: any) => {
-  if (id % 2 == 0) {
-    // 关于我
-    uni.redirectTo({
-      url: "/subPages/subUser/about/index"
-    })
-  } else {
-    // vip
-    uni.redirectTo({
-      url: "/subPages/subUser/vip/index"
-    })
-  }
+const goDetil = (url: string) => {
+  console.log("🧀[url]:", url)
+  uni.redirectTo({
+    url
+  })
 }
 
 export default () => {
-  return { indexList, loadmore, goDetil }
+  return { indexList, goDetil }
 }

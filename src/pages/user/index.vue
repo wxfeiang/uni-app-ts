@@ -1,26 +1,16 @@
 <script setup lang="ts">
-const { indexList, loadmore, goDetil } = useUser();
-onMounted(() => {
-  // vue3 生命周期也可以
-
-  loadmore();
-});
-const scrolltolower = () => {
-  loadmore();
-};
+const { indexList, goDetil } = useUser();
 </script>
 <template>
-  <view class="">我的</view>
-
   <view class="u-page">
-    <u-list @scrolltolower="scrolltolower">
+    <u-list>
       <u-list-item v-for="(item, index) in indexList" :key="index">
-        <u-cell :title="`列表长度-${index + 1}`" @click="goDetil(index)">
+        <u-cell :title="item.title" @click="goDetil(item.url)">
           <template #icon>
             <u-avatar
               shape="square"
               size="35"
-              :src="item.url"
+              :src="item.img"
               customStyle="margin: -3px 5px -3px 0"
             ></u-avatar>
           </template>

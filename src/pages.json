@@ -62,6 +62,18 @@
 					"style": {
 						"navigationBarTitleText": "vip"
 					}
+				},
+				{
+					"path": "PersonalIncomeTax/index",
+					
+					"style": {
+						"navigationStyle": "custom"
+						//"navigationBarTitleText": "收入纳税明细",
+						// "navigationBarBackgroundColor": "#000",
+						// "backgroundColor": "#000",
+						// "navigationBarTextStyle": "white"
+
+					}
 				}
 			]
 		}
