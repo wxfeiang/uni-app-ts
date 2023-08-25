@@ -20,7 +20,7 @@ const { navOption, conunt } = useTax();
     </u-navbar>
   </view>
   <view class="list_warp">
-    <u-cell-group>
+    <u-cell-group :border="false">
       <u-cell
         v-for="(item, index) in conunt"
         :key="index"
@@ -39,5 +39,9 @@ body {
   margin-top: 14px;
   padding: 0px 20px 0;
   background-color: #fff;
+}
+::deep .u-cell__body {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 </style>
