@@ -35,6 +35,9 @@ page,
 body {
   background: #f5f6fa;
 }
+.layout {
+  padding: 0 20px;
+}
 .list_warp {
   margin-top: 14px;
   padding: 0px 20px 0;
