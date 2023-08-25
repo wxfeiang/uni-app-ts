@@ -5,7 +5,7 @@ const navOption = ref({
   textColor: "#4985E7"
 })
 
-const conunt = reactive([
+const conunt = reactive(<any>[
   {
     title: "收入合计",
     icon: "",
@@ -20,6 +20,17 @@ const conunt = reactive([
   }
 ])
 
+const allList = reactive(<any>[
+  {
+    title: "正常",
+    time: "2023-01",
+    company: "某",
+    income: "10000",
+    declaredTaxAmount: "130",
+    unit: "元"
+  }
+])
+
 export default () => {
-  return { navOption, conunt }
+  return { navOption, conunt, allList }
 }

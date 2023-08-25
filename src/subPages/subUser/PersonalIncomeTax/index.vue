@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { navOption, conunt } = useTax();
+const { navOption, conunt, allList } = useTax();
 </script>
 <template>
   <view>
@@ -19,7 +19,7 @@ const { navOption, conunt } = useTax();
       </template>
     </u-navbar>
   </view>
-  <view class="list_warp">
+  <view class="dy_body list_warp">
     <u-cell-group :border="false">
       <u-cell
         v-for="(item, index) in conunt"
@@ -29,18 +29,30 @@ const { navOption, conunt } = useTax();
       ></u-cell>
     </u-cell-group>
   </view>
+
+  <view class="dy_body list_warp" v-for="(item, index) in allList" :key="index">
+    <!--  多个list -->
+    <u-cell-group :border="false">
+      <u-cell
+        v-for="(i, j) of item"
+        :key="j"
+        :title="item.title"
+        :border="false"
+      ></u-cell>
+    </u-cell-group>
+  </view>
 </template>
 <style lang="scss" scoped>
 page,
 body {
   background: #f5f6fa;
 }
-.layout {
-  padding: 0 20px;
+.dy_body {
+  padding: 0px 20px;
 }
 .list_warp {
   margin-top: 14px;
-  padding: 0px 20px 0;
+
   background-color: #fff;
 }
 ::deep .u-cell__body {
