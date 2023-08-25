@@ -73,6 +73,11 @@ const { navOption, conunt, allList, constant } = useTax();
     </u-cell-group>
   </view>
 </template>
+<style>
+page {
+  background: #f5f6fa;
+}
+</style>
 <style lang="scss" scoped>
 page,
 body {
@@ -92,10 +97,21 @@ body {
 .list_box {
   padding: 5px 20px 20px;
 }
+
+/*#ifdef H5*/
 .dy_cell ::v-deep .u-cell__body {
   padding-top: 2px !important;
   padding-bottom: 0px !important;
 }
+/*#endif*/
+
+/*#ifdef MP*/
+.list_box ::v-deep .u-cell__body {
+  padding-top: 4px !important;
+  padding-bottom: 4px !important;
+}
+/*#endif*/
+
 .right_time {
   color: #333;
   padding-right: 30px;
