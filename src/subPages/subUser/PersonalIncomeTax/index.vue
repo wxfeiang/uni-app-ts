@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { navOption, conunt, allList } = useTax();
+const { navOption, conunt, allList, constant } = useTax();
 </script>
 <template>
   <view>
@@ -33,12 +33,11 @@ const { navOption, conunt, allList } = useTax();
   <view class="dy_body list_warp" v-for="(item, index) in allList" :key="index">
     <!--  多个list -->
     <u-cell-group :border="false">
-      <u-cell
-        v-for="(i, j) of item"
-        :key="j"
-        :title="item.title"
-        :border="false"
-      ></u-cell>
+      <u-cell :border="false" :title="constant.title"> </u-cell>
+      <u-cell :border="false" :title="constant.title"> </u-cell>
+      <u-cell :border="false" :title="constant.company"> </u-cell>
+      <u-cell :border="false" :title="constant.income"> </u-cell>
+      <u-cell :border="false" :title="constant.declaredTaxAmount"> </u-cell>
     </u-cell-group>
   </view>
 </template>
