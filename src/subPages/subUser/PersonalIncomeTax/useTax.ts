@@ -1,3 +1,11 @@
+interface allList {
+  time: string
+  smTitle: string
+  company: string
+  income: number
+  declaredTaxAmount: number
+}
+
 const navOption = ref({
   leftText: "返回",
   title: "收入纳税明细查询",
@@ -5,11 +13,11 @@ const navOption = ref({
   textColor: "#4985E7"
 })
 
-const conunt = reactive(<any>[
+const conunt = reactive([
   {
-    title: "收入合计",
+    title: "收入合计:",
     icon: "",
-    value: "100000",
+    value: 0,
     unit: "元",
     titleStyle: {
       color: "#333",
@@ -17,9 +25,9 @@ const conunt = reactive(<any>[
     }
   },
   {
-    title: "已申报税额合计",
+    title: "已申报税额合计:",
     icon: "",
-    value: "100000",
+    value: 0,
     unit: "元",
     titleStyle: {
       color: "#333",
@@ -28,22 +36,8 @@ const conunt = reactive(<any>[
   }
 ])
 
-const allList = reactive(<any>[
-  {
-    time: "2023-01",
-    smTitle: "正常工资薪金",
-    company: "西安易才人力资源有限公司",
-    income: "10000",
-    declaredTaxAmount: "130"
-  },
-  {
-    time: "2023-01",
-    smTitle: "正常工资薪金",
-    company: "西安易才人力资源有限公司",
-    income: "10000",
-    declaredTaxAmount: "130"
-  }
-])
+const allList = reactive<allList[]>([])
+
 const constant = reactive({
   title: "工资薪金",
   titleStyle: {
@@ -63,6 +57,37 @@ const constant = reactive({
   }
 })
 
+// 获取当前的时间
+
+const changTiem = () => {
+  let day = new Date()
+  return {
+    y: day.getFullYear(),
+    m: day.getMonth()
+  }
+}
+const toTwo = (date: any) => {
+  return date < 10 ? "-0" + date : date
+}
+
+// 最终数据
+const getAllList = () => {
+  for (let i = changTiem().m; i > 0; i--) {
+    allList.push({
+      time: changTiem().y + toTwo(i),
+      smTitle: "正常工资薪金",
+      company: "西安易才人力资源有限公司",
+      income: 10000 + uni.$u.random(10, 90) * 0.51,
+      declaredTaxAmount: 100 + uni.$u.random(10, 50) * 0.23
+    })
+  }
+  // 计算总和
+  allList.forEach((item, index) => {
+    conunt[0].value += item.income
+    conunt[1].value += item.declaredTaxAmount
+  })
+}
+
 export default () => {
-  return { navOption, conunt, allList, constant }
+  return { navOption, conunt, allList, constant, changTiem, getAllList }
 }

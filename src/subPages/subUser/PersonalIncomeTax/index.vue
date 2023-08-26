@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { navOption, conunt, allList, constant } = useTax();
+const { navOption, conunt, allList, constant, getAllList } = useTax();
+getAllList();
 </script>
 <template>
   <view>
@@ -9,7 +10,7 @@ const { navOption, conunt, allList, constant } = useTax();
       :title="navOption.title"
       :safeAreaInsetTop="false"
       autoBack
-      :placeholder="navOption.title"
+      :placeholder="true"
       fixed
     >
       <template #right>

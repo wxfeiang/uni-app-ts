@@ -17,10 +17,11 @@ const indexList = ref(<any>[
 ])
 
 const goDetil = (url: string) => {
-  console.log("🧀[url]:", url)
-  uni.redirectTo({
-    url
-  })
+  // uni.$u.route(url, {
+  //   // name: "lisa"
+  // })
+  // 无参数
+  uni.$u.route(url)
 }
 
 export default () => {
