@@ -8,7 +8,7 @@ getAllList();
       :leftText="navOption.leftText"
       :leftIconColor="navOption.textColor"
       :title="navOption.title"
-      :safeAreaInsetTop="false"
+      :safeAreaInsetTop="true"
       autoBack
       :placeholder="true"
       fixed
