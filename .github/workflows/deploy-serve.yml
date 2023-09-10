@@ -58,7 +58,7 @@ jobs:
           user: ${{ secrets.USER_NAME }}
           pass: ${{ secrets.USER_PASS }}
           connect_timeout: 10s
-          local: '/dist/build/h5/*'
+          local: 'dist/build/h5/*'
           remote: /home/www/uni-h5/    # 成的静态文件存放的地方
     
 
