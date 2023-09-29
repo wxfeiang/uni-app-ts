@@ -14,7 +14,7 @@ const requestInterceptors = () => {
       config.data = config.data || {}
       // 演示custom 用处
       if (config.custom.auth) {
-        config.header.Authorization = authStore.token
+        config.header.Authorization = "Bearer " + authStore.token
       }
       if (config.custom.loading) {
         // 默认所有的请求都没有

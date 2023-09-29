@@ -33,7 +33,7 @@ const Login = async () => {
     const config = {
       custom: { toast: true }
     }
-    const data = await http.post("/mock/sys/login", loginFrom, config) // 参数 空配置
+    const data = await http.post("/employee/login", loginFrom, config) // 参数 空配置
     authStore.SETTIKEN(data.token)
     userInfo.value = data
     uni.switchTab({ url: "/pages/home/index" })
@@ -45,7 +45,7 @@ const getToken = async () => {
       params: {}, // 提交参数 params  url拼接
       custom: { auth: true, toast: true }
     }
-    const data = await http.get("/users/testtoken", config)
+    const data = await http.get("/employee/test", config)
   } catch (error) {
     console.log("🍲[error]:", error)
   }

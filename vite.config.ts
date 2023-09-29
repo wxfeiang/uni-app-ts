@@ -43,7 +43,7 @@ export default ({ command, mode }: ConfigEnv) => {
         [env.VITE_BASE_API]: {
           target: env.VITE_BASE_URL,
           changeOrigin: true,
-          rewrite: (path) => path.replace(new RegExp("^" + env.VITE_BASE_API), env.VITE_BASE_API)
+          rewrite: (path) => path.replace(new RegExp("^" + env.VITE_BASE_API), "/v1")
         }
       }
     }
