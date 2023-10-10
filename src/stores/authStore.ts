@@ -22,12 +22,17 @@ export const useAuthStore = defineStore(
   "authStore",
   () => {
     const token = ref("")
+    const userInfo = ref<any>()
 
-    function SETTIKEN(value: string) {
-      token.value = value
+    function SETTIKEN(data: any) {
+      token.value = data.token
+      userInfo.value = data
     }
+    // function SETUSERINFO(value: string) {
+    //   token.value = value
+    // }
 
-    return { SETTIKEN, token }
+    return { SETTIKEN, token, userInfo }
   },
   {
     persist: {

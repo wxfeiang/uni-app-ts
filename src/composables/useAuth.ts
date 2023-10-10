@@ -10,8 +10,8 @@ interface userInfo {
 
 let userInfo = ref(<userInfo>{})
 const loginFrom = reactive({
-  username: "",
-  password: ""
+  username: "admin",
+  password: "123456"
 })
 const rules = {
   username: {
@@ -34,7 +34,7 @@ const Login = async () => {
       custom: { toast: true }
     }
     const data = await http.post("/employee/login", loginFrom, config) // 参数 空配置
-    authStore.SETTIKEN(data.token)
+    authStore.SETTIKEN(data)
     userInfo.value = data
     uni.switchTab({ url: "/pages/home/index" })
   } catch (error) {}

@@ -1,3 +1,4 @@
+import uni from '@dcloudio/vite-plugin-uni';
 <script setup lang="ts">
 const { navOption, conunt, allList, constant, getAllList } = useTax();
 getAllList();
@@ -31,18 +32,20 @@ getAllList();
       ></u-cell>
     </u-cell-group>
   </view>
-
   <view class="dy_body list_warp list_box" v-for="(item, index) in allList" :key="index">
     <!--  多个list -->
     <u-cell-group :border="false">
       <u-cell :title="constant.title" :border="false" :titleStyle="constant.titleStyle">
         <template #right-icon>
-          <view class="right_time">{{ item.time }}</view>
+          <view class="right_time">
+            <!-- {{ item.date }} -->
+            {{ $u.timeFormat(new Date(item.date), "yyyy-mm") }}
+          </view>
         </template>
       </u-cell>
       <u-cell
         :border="false"
-        :title="constant.smTitle + item.smTitle"
+        :title="constant.smTitle + item.name"
         :titleStyle="constant.titelOthStyle"
         class="dy_cell"
       >
@@ -58,14 +61,14 @@ getAllList();
       </u-cell>
       <u-cell
         :border="false"
-        :title="constant.income + item.income + constant.unit"
+        :title="constant.income + item.deduct + constant.unit"
         :titleStyle="constant.titelOthStyle"
         class="dy_cell"
       >
       </u-cell>
       <u-cell
         :border="false"
-        :title="constant.declaredTaxAmount + item.declaredTaxAmount + constant.unit"
+        :title="constant.declaredTaxAmount + item.revenue + constant.unit"
         :titleStyle="constant.titelOthStyle"
         class="dy_cell"
       >

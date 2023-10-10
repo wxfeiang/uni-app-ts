@@ -1,9 +1,12 @@
+import { useAuthStore } from "@/stores/authStore"
+const { userInfo } = useAuthStore()
+const http = uni.$u.http
 interface allList {
-  time: string
-  smTitle: string
+  date: string
+  name: string
   company: string
-  income: number
-  declaredTaxAmount: number
+  deduct: number
+  revenue: number
 }
 
 const navOption = ref({
@@ -36,8 +39,6 @@ const conunt = reactive([
   }
 ])
 
-const allList = reactive<allList[]>([])
-
 const constant = reactive({
   title: "工资薪金",
   titleStyle: {
@@ -66,25 +67,27 @@ const changTiem = () => {
     m: day.getMonth()
   }
 }
-const toTwo = (date: any) => {
-  return date < 10 ? "-0" + date : date
-}
 
+const allList = ref<allList[]>([])
+
+//FIX:  reactive({List: []}) // 必须是对象
 // 最终数据
-const getAllList = () => {
-  for (let i = changTiem().m; i > 0; i--) {
-    allList.push({
-      time: changTiem().y + toTwo(i),
-      smTitle: "正常工资薪金",
-      company: "西安易才人力资源有限公司",
-      income: 10000 + uni.$u.random(10, 90) * 0.51,
-      declaredTaxAmount: 100 + uni.$u.random(10, 50) * 0.23
-    })
+const getAllList = async () => {
+  try {
+    const config = {
+      params: {
+        eId: userInfo.id
+      }, // 提交参数 params  url拼接
+      custom: { auth: true, toast: true }
+    }
+    allList.value = await http.get("/individualtaxes", config)
+  } catch (error) {
+    console.log("🍲[error]:", error)
   }
-  // 计算总和
-  allList.forEach((item, index) => {
-    conunt[0].value += item.income
-    conunt[1].value += item.declaredTaxAmount
+  // // 计算总和
+  allList.value.forEach((item, index) => {
+    conunt[0].value += item.revenue
+    conunt[1].value += item.deduct
   })
 }
 

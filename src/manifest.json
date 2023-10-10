@@ -52,12 +52,16 @@
     "mp-weixin" : {
         "appid" : "wxab8154567766b497",
         "setting" : {
-            "urlCheck" : false
+            "urlCheck" : false,
+            "es6" : true,
+            "postcss" : true,
+            "minified" : true
         },
         "optimization" : {
             "subPackages" : true //是否启用分包优化
         },
-        "usingComponents" : true
+        "usingComponents" : true,
+        "permission" : {}
     },
     "mp-alipay" : {
         "usingComponents" : true
@@ -75,7 +79,7 @@
     "h5" : {
         "router" : {
             "mode" : "hash",
-            "base": "./"
+            "base" : "./"
         }
     }
 }
