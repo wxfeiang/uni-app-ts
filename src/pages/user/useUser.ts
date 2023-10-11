@@ -13,6 +13,11 @@ const indexList = ref(<any>[
     title: "个税显示",
     url: "/subPages/subUser/PersonalIncomeTax/index",
     img: "https://cdn.uviewui.com/uview/album/7.jpg"
+  },
+  {
+    title: "个税添加",
+    url: "/subPages/subUser/PersonalIncomeTax/add",
+    img: "https://cdn.uviewui.com/uview/album/7.jpg"
   }
 ])
 

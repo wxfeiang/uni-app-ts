@@ -73,6 +73,13 @@
 						// "navigationBarTextStyle": "white"
 
 					}
+				},
+				{
+					"path": "PersonalIncomeTax/add",
+					"style": {
+						"navigationStyle": "custom"
+
+					}
 				}
 			]
 		}
