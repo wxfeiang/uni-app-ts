@@ -20,9 +20,11 @@ currentlist.value = JSON.parse(JSON.stringify(props.list)).map((i: any) => {
 const currentIndex = ref<number>();
 const tagClick = (item: any, index: number) => {
   currentIndex.value = index;
-  currentlist.value[index].current++;
-  if (item.current > 2) {
-    currentlist.value[index].current = 0;
+  if (item.sort) {
+    currentlist.value[index].current++;
+    if (item.current > 2) {
+      currentlist.value[index].current = 0;
+    }
   }
   emit("tab", currentlist.value[index]);
 };
@@ -41,13 +43,21 @@ const tagClick = (item: any, index: number) => {
         <u-icon
           name="arrow-up-fill"
           :size="item.iconSize"
-          :color="item.current == 1 ? item.activeColor || props.active : ''"
+          :color="
+            item.current == 1 && currentIndex === index
+              ? item.activeColor || props.active
+              : ''
+          "
         ></u-icon>
 
         <u-icon
           name="arrow-down-fill"
           :size="item.iconSize"
-          :color="item.current == 2 ? item.activeColor || props.active : ''"
+          :color="
+            item.current == 2 && currentIndex === index
+              ? item.activeColor || props.active
+              : ''
+          "
         >
         </u-icon>
       </view>
