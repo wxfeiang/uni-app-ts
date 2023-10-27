@@ -58,13 +58,11 @@ const rules = {
   ],
 };
 const uForm = ref(null);
-console.log("🥘[uForm]:", uForm);
+
 function submit() {
   uForm.value
     .validate()
     .then(async (res) => {
-      console.log("🍩[res]:", res);
-      uni.$u.toast("校验通过");
       try {
         const config = {
           custom: { auth: true, toast: true },
@@ -74,14 +72,11 @@ function submit() {
           name: "sdsd",
           eId: userInfo.id,
         };
-        const rul = await http.post("/individualtaxes", data, config);
-        console.log("🥩[res]:", rul);
-      } catch {
-        console.log("🍨");
-      }
+        await http.post("/individualtaxes", data, config);
+      } catch {}
     })
     .catch((errors) => {
-      uni.$u.toast("校验失败");
+      uni.$u.toast("校验失败", errors);
     });
 }
 </script>
