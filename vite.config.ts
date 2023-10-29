@@ -6,7 +6,6 @@ import Components from "unplugin-vue-components/vite"
 // import { parseEnv } from "./.env"
 
 export default ({ command, mode }: ConfigEnv) => {
-  console.log("🍔[command]:", command)
   const env = loadEnv(mode, __dirname)
   const result = {
     plugins: [
@@ -19,7 +18,12 @@ export default ({ command, mode }: ConfigEnv) => {
           /\.vue\?vue/ // .vue
         ],
         imports: ["vue", "uni-app", "pinia"],
-        dirs: ["src/composables/**/*", "src/pages/**/*", "src/subPages/**/*"],
+        dirs: [
+          "src/composables/**/*",
+          "src/components/**/*",
+          "src/pages/**/*",
+          "src/subPages/**/*"
+        ],
         dts: "typings/auto-imports.d.ts"
       }),
       Components({

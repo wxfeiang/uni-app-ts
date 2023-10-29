@@ -27,6 +27,7 @@ const rules = {
     trigger: ["blur", "change"]
   }
 }
+const success = ref<any>()
 
 const Login = async () => {
   try {
@@ -36,8 +37,13 @@ const Login = async () => {
     const data = await http.post("/employee/login", loginFrom, config) // 参数 空配置
     authStore.SETTIKEN(data)
     userInfo.value = data
-    uni.switchTab({ url: "/pages/home/index" })
-  } catch (error) {}
+    uni.switchTab({
+      url: "/pages/home/index"
+    })
+  } catch (error: any) {
+    success.value = error
+    userInfo.value = error
+  }
 }
 const getToken = async () => {
   try {
@@ -50,7 +56,12 @@ const getToken = async () => {
     console.log("🍲[error]:", error)
   }
 }
-
+// const test = () => {
+//   uni.$u.toast("点击了==")
+//   uni.switchTab({
+//     url: "/pages/home/index"
+//   })
+// }
 export default () => {
-  return { Login, userInfo, getToken, loginFrom, rules }
+  return { Login, userInfo, getToken, loginFrom, rules, success }
 }

@@ -13,9 +13,17 @@ const props = defineProps({
 
 const currentlist = ref<any>([]);
 
-currentlist.value = JSON.parse(JSON.stringify(props.list)).map((i: any) => {
-  return { ...i, current: i.sort ? 0 : null };
-});
+watch(
+  () => props.list, // 要监听的响应式数据
+  (newValue, oldValue) => {
+    currentlist.value = newValue.map((i: any) => {
+      return { ...i, current: i.sort ? 0 : null };
+    });
+  },
+  {
+    immediate: true, // 在组件挂载时立即执行回调函数
+  }
+);
 
 const currentIndex = ref<number>();
 const tagClick = (item: any, index: number) => {
@@ -30,6 +38,8 @@ const tagClick = (item: any, index: number) => {
 };
 </script>
 <template>
+  <!-- default 必须加 -->
+
   <view class="warp" v-if="currentlist?.length > 0">
     <view
       class="item_box"
