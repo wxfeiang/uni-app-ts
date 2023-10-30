@@ -54,6 +54,14 @@ export default ({ command, mode }: ConfigEnv) => {
         },
       },
     },
+    build: {
+      minify: 'terser',
+      terserOptions: {
+        compress: {
+          drop_console: true,
+        },
+      },
+    },
   };
   return result;
 };
