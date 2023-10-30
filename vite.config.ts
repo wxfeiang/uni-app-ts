@@ -1,7 +1,7 @@
 import uni from '@dcloudio/vite-plugin-uni';
+import * as path from 'path';
 import type { ConfigEnv } from 'vite';
 import { loadEnv } from 'vite';
-
 // 加上下面这一行
 import AutoImport from 'unplugin-auto-import/vite';
 import Components from 'unplugin-vue-components/vite';
@@ -22,7 +22,7 @@ export default ({ command, mode }: ConfigEnv) => {
           /\.vue\?vue/, // .vue
         ],
         imports: ['vue', 'uni-app', 'pinia'],
-        dirs: ['src/composables/**/*', 'src/pages/**/*'],
+        dirs: ['src/components/**/*', 'src/composables/**/*', 'src/pages/**/*'],
         dts: 'typings/auto-imports.d.ts',
       }),
       Components({
@@ -34,6 +34,12 @@ export default ({ command, mode }: ConfigEnv) => {
         resolvers: [],
       }),
     ],
+    resolve: {
+      //设置别名
+      alias: {
+        '@': path.resolve(__dirname, 'src'),
+      },
+    },
     server: {
       host: '0.0.0.0',
       // 端口
